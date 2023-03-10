@@ -1,0 +1,12 @@
+{
+  "name": "@pm2js/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --stream -r run build",
+    "playground": "pnpm --filter=@pm2js/playground run start"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
