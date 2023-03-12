@@ -1,4 +1,4 @@
-import { toJSONSchema, validateJSONSchema } from '@pm2js/converter'
+import { toJSONSchema, validateDocument } from '@pm2js/converter'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
@@ -52,8 +52,8 @@ const App = () => {
   }, [state])
 
   useEffect(() => {
-    setJsonSchemaValid(validateJSONSchema(schema, jsonSchema))
-  }, [schema, jsonSchema])
+    setJsonSchemaValid(validateDocument(jsonSchema, document))
+  }, [jsonSchema, document])
 
   return (
     <div className="container">
