@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "author": "Jim Casey",
   "license": "MIT",
+  "description": "ProseMirror Schema to JSON Schema playground",
   "repository": {
     "type": "git",
     "url": "https://github.com/jimcasey/pm2js.git",
@@ -15,6 +16,7 @@
     "start": "vite --open"
   },
   "dependencies": {
+    "@pm2js/converter": "workspace:^0.0.0",
     "prosemirror-model": "^1.19.0",
     "prosemirror-schema-basic": "^1.2.1",
     "prosemirror-state": "^1.4.2",

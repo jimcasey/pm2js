@@ -1,3 +1,4 @@
+import { toJSONSchema } from '@pm2js/converter'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
@@ -55,6 +56,9 @@ function App() {
       </div>
       <div style={{ border: '1px solid grey' }}>
         <pre>{JSON.stringify(state.schema.spec, null, 2)}</pre>
+      </div>
+      <div style={{  border: '1px solid grey' }}>
+        <pre>{JSON.stringify(toJSONSchema(state.schema), null, 2)}</pre>
       </div>
     </div>
   )
