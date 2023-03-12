@@ -1,0 +1,24 @@
+{
+  "name": "@pm2js/converter",
+  "version": "0.1.0",
+  "author": "Jim Casey",
+  "license": "MIT",
+  "description": "ProseMirror Schema to JSON Schema converter",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jimcasey/pm2js.git",
+    "directory": "packages/converter"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "prosemirror-model": "^1.19.0"
+  }
+}
