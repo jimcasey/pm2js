@@ -1,28 +1,37 @@
 import Ajv from 'ajv'
 import { Schema } from 'prosemirror-model'
 
-const TEST_SCHEMA = {
-  title: 'ProseMirror',
-  description: 'Converted from ProseMirror schema',
+const BASE_SCHEMA = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
   type: 'object',
   properties: {
-    nodes: { type: 'object' },
+    type: { const: 'doc' },
+    content: { $ref: '#/definitions/Content' },
   },
-  required: ['nodes'],
+  required: ['type', 'content'],
+  additionalProperties: false,
+  definitions: {
+    Content: {
+      type: 'array',
+      items: {
+        type: 'object',
+      },
+    },
+  },
 }
 
 export const toJSONSchema = (schema: Schema): object => {
-  return TEST_SCHEMA
+  return BASE_SCHEMA
 }
 
-export const validateJSONSchema = (
-  schema: Schema,
+export const validateDocument = (
   jsonSchema: object,
+  document: object,
 ): boolean => {
   try {
     const ajv = new Ajv()
     const validate = ajv.compile(jsonSchema)
-    return validate(schema.spec)
+    return validate(document)
   } catch (error) {
     console.error(error)
     return false
