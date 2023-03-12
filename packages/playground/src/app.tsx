@@ -1,4 +1,4 @@
-import { toJSONSchema } from '@pm2js/converter'
+import { toJSONSchema, validateJSONSchema } from '@pm2js/converter'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
@@ -34,6 +34,8 @@ const App = () => {
       doc: schema.nodeFromJSON(document),
     }),
   )
+  const [jsonSchema] = useState(() => toJSONSchema(state.schema))
+  const [jsonSchemaValid, setJsonSchemaValid] = useState<boolean>()
 
   useEffect(() => {
     if (editorRef.current) {
@@ -49,19 +51,23 @@ const App = () => {
     }
   }, [state])
 
+  useEffect(() => {
+    setJsonSchemaValid(validateJSONSchema(schema, jsonSchema))
+  }, [schema, jsonSchema])
+
   return (
     <div className="container">
       <Box title="ProseMirror Editor">
         <div ref={editorRef} />
       </Box>
       <Box title="ProseMirror Document">
-        <pre>{JSON.stringify(document, null, 2)}</pre>
+        <Fixed text={document} />
       </Box>
       <Box title="ProseMirror Schema">
-        <pre>{JSON.stringify(state.schema.spec, null, 2)}</pre>
+        <Fixed text={state.schema.spec} />
       </Box>
-      <Box title="JSON Schema">
-        <pre>{JSON.stringify(toJSONSchema(state.schema), null, 2)}</pre>
+      <Box title="JSON Schema" isValid={jsonSchemaValid}>
+        <Fixed text={jsonSchema} />
       </Box>
     </div>
   )
@@ -69,17 +75,28 @@ const App = () => {
 
 const Box = ({
   title,
+  isValid,
   children,
 }: {
   title: string
+  isValid?: boolean
   children: React.ReactNode
 }) => {
   return (
     <div className="box">
-      <div className="title">{title}:</div>
+      <div className="title">
+        {title}:{' '}
+        {isValid !== undefined && (
+          <div className="valid">{isValid ? '✅' : '❌'}</div>
+        )}
+      </div>
       <div className="content">{children}</div>
     </div>
   )
 }
+
+const Fixed = ({ text }: { text: object }) => (
+  <pre>{JSON.stringify(text, null, 2)}</pre>
+)
 
 export default App

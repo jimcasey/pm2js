@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "pnpm --stream -r run build",
+    "dev": "pnpm --filter=@pm2js/converter run dev",
     "playground": "pnpm --filter=@pm2js/playground run start"
   },
   "devDependencies": {
