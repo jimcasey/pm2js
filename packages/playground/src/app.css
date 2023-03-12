@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  width: 50%;
+  height: 50%;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.title {
+  font-weight: bold;
+  height: 20px;
+}
+
+.content {
+  height: 100%-20px;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+}
+
+.ProseMirror {
+  margin: 0;
+  padding: 0;
+}

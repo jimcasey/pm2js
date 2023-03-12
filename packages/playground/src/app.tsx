@@ -4,6 +4,7 @@ import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
 import { useState, useRef, useEffect } from 'react'
 
+import './app.css'
 import 'prosemirror-view/style/prosemirror.css'
 
 const DEFAULT_DOCUMENT = {
@@ -23,7 +24,7 @@ const DEFAULT_DOCUMENT = {
   ],
 }
 
-function App() {
+const App = () => {
   const editorRef = useRef<HTMLDivElement>(null)
 
   const [document, setDocument] = useState<object>(DEFAULT_DOCUMENT)
@@ -49,17 +50,34 @@ function App() {
   }, [state])
 
   return (
-    <div>
-      <div ref={editorRef} style={{ border: '1px solid grey' }} />
-      <div style={{ border: '1px solid grey' }}>
+    <div className="container">
+      <Box title="ProseMirror Editor">
+        <div ref={editorRef} />
+      </Box>
+      <Box title="ProseMirror Document">
         <pre>{JSON.stringify(document, null, 2)}</pre>
-      </div>
-      <div style={{ border: '1px solid grey' }}>
+      </Box>
+      <Box title="ProseMirror Schema">
         <pre>{JSON.stringify(state.schema.spec, null, 2)}</pre>
-      </div>
-      <div style={{  border: '1px solid grey' }}>
+      </Box>
+      <Box title="JSON Schema">
         <pre>{JSON.stringify(toJSONSchema(state.schema), null, 2)}</pre>
-      </div>
+      </Box>
+    </div>
+  )
+}
+
+const Box = ({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) => {
+  return (
+    <div className="box">
+      <div className="title">{title}:</div>
+      <div className="content">{children}</div>
     </div>
   )
 }
