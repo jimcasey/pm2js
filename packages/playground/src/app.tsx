@@ -4,25 +4,10 @@ import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
 import { useState, useRef, useEffect } from 'react'
 
+import { DEFAULT_DOCUMENT } from './data'
+
 import './app.css'
 import 'prosemirror-view/style/prosemirror.css'
-
-const DEFAULT_DOCUMENT = {
-  type: 'doc',
-  content: [
-    {
-      type: 'heading',
-      attrs: { level: 1 },
-      content: [
-        { type: 'text', text: 'ProseMirror to JSON Schema Playground' },
-      ],
-    },
-    {
-      type: 'paragraph',
-      content: [{ type: 'text', text: 'Welcome to the playground.' }],
-    },
-  ],
-}
 
 const App = () => {
   const editorRef = useRef<HTMLDivElement>(null)
