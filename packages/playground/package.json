@@ -16,7 +16,7 @@
     "start": "vite --open"
   },
   "dependencies": {
-    "@pm2js/converter": "workspace:^0.0.0",
+    "@pm2js/converter": "workspace:^0.1.0",
     "prosemirror-model": "^1.19.0",
     "prosemirror-schema-basic": "^1.2.1",
     "prosemirror-state": "^1.4.2",

@@ -22,7 +22,7 @@ importers:
 
   packages/playground:
     specifiers:
-      '@pm2js/converter': workspace:*
+      '@pm2js/converter': workspace:^0.1.0
       '@types/react': ^18.0.27
       '@types/react-dom': ^18.0.10
       '@vitejs/plugin-react': ^3.1.0
