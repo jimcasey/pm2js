@@ -2,7 +2,7 @@ import { toJSONSchema, validateDocument } from '@pm2js/converter'
 import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
 import { schema } from 'prosemirror-schema-basic'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 
 import { DEFAULT_DOCUMENT } from './data'
 
@@ -36,7 +36,7 @@ const App = () => {
     }
   }, [state])
 
-  useEffect(() => {
+  useMemo(() => {
     setJsonSchemaValid(validateDocument(jsonSchema, document))
   }, [jsonSchema, document])
 
