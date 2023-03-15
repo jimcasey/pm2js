@@ -9,6 +9,12 @@ import { DEFAULT_DOCUMENT } from './data'
 import './app.css'
 import 'prosemirror-view/style/prosemirror.css'
 
+schema.nodes['test_node'] = schema.nodeFromJSON({
+  content: 'inline*',
+  group: 'block',
+  parseDOM: [{ tag: 'p' }],
+})
+
 const App = () => {
   const editorRef = useRef<HTMLDivElement>(null)
 

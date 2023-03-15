@@ -83,6 +83,29 @@ export const DEFAULT_DOCUMENT = {
         },
         {
           type: 'text',
+          text: ',  ',
+        },
+        {
+          type: 'text',
+          marks: [
+            {
+              type: 'link',
+              attrs: {
+                href: 'http://google.com',
+                title: 'Google',
+              },
+            },
+            {
+              type: 'em',
+            },
+            {
+              type: 'strong',
+            },
+          ],
+          text: 'multiple formats',
+        },
+        {
+          type: 'text',
           text: ', and ',
         },
         {
@@ -133,7 +156,14 @@ export const DEFAULT_DOCUMENT = {
       content: [
         {
           type: 'text',
-          text: 'There’s an empty text block above this, and here is a code block:',
+          text: 'There’s an empty text block above this, and this is a hard break:',
+        },
+        {
+          type: 'hard_break',
+        },
+        {
+          type: 'text',
+          text: '...and here is a code block:',
         },
       ],
     },
